@@ -7,10 +7,7 @@ class Model {
 	}	
 	async get_countries() {
 		return await ajax(this.countries_target).then(json => {
-			let countries=[];
-			for(let i=0; i<json.length; i++)
-				countries[i]=json[i].name;
-			return countries;
+			return json;
 		}).catch(e => {
 			console.log(e);
 		});
