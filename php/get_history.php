@@ -29,44 +29,41 @@
 		$deaths=(array)$timeline->deaths;
 		$date=array_keys($cases);
 		$n_cases=count($cases);
-		$nb=0;
+		$nb=0;		
+		$history=array(
+			"months" => array(),
+			"cases" => array(),
+			"recovered" => array(),
+			"deaths" => array()
+		);
 		$months=array();
-		$months_text=array();
-		$data_cases=array();
-		$data_recovered=array();
-		$data_deaths=array();
 
-		for($i=0, $month_index=0; $i<$n_cases; $i++, $nb++) {
-			$current_month=explode("/", $date[$i])[0];
-			if(isset($months[$month_index]) && $months[$month_index]!=(int)$current_month) {
-				$data_cases[$month_index]=average($data_cases[$month_index], $nb);
-				$data_recovered[$month_index]=average($data_recovered[$month_index], $nb);
-				$data_deaths[$month_index]=average($data_deaths[$month_index], $nb);
+		for($i=0, $index=0; $i<$n_cases; $i++, $nb++) {
+			$current_month=(int)($date[$i][0].$date[$i][1]);
+			if(isset($months[$index]) && $months[$index]!=$current_month) {
+				$history["cases"][$index]=average($history["cases"][$index], $nb);
+				$history["recovered"][$index]=average($history["recovered"][$index], $nb);
+				$history["deaths"][$index]=average($history["deaths"][$index], $nb);
 				$nb=0;
-				$month_index++;
+				$index++;
 			}
-			if(!isset($months[$month_index])) {
-				$months[$month_index]=(int)$current_month;
-				$months_text[$month_index]=get_month((int)$current_month);
-				$data_cases[$month_index]=0;
-				$data_recovered[$month_index]=0;
-				$data_deaths[$month_index]=0;
+			if(!isset($months[$index])) {
+				$months[$index]=$current_month;
+				$history["months"][$index]=get_month($current_month);
+				$history["cases"][$index]=0;
+				$history["recovered"][$index]=0;
+				$history["deaths"][$index]=0;
 			}
-			$data_cases[$month_index]+=$cases[$date[$i]];
-			$data_recovered[$month_index]+=$recovered[$date[$i]];
-			$data_deaths[$month_index]+=$deaths[$date[$i]];
+			$history["cases"][$index]+=$cases[$date[$i]];
+			$history["recovered"][$index]+=$recovered[$date[$i]];
+			$history["deaths"][$index]+=$deaths[$date[$i]];
 		}
 		if($nb>0) {
-			$data_cases[$month_index]=average($data_cases[$month_index], $nb);
-			$data_recovered[$month_index]=average($data_recovered[$month_index], $nb);
-			$data_deaths[$month_index]=average($data_deaths[$month_index], $nb);
+			$history["cases"][$index]=average($history["cases"][$index], $nb);
+			$history["recovered"][$index]=average($history["recovered"][$index], $nb);
+			$history["deaths"][$index]=average($history["deaths"][$index], $nb);
 		}
-		return json_encode(array(
-			"months" => $months_text,
-			"cases" => $data_cases,
-			"recovered" => $data_recovered,
-			"deaths" => $data_deaths
-		));
+		return json_encode($history);
 	}
 
 	//Request and format result
