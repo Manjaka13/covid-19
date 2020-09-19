@@ -21,17 +21,31 @@ class View {
 		};
 		this.last_update=document.querySelector("#covid19 .country_data_update_date .date .value");
 		this.loading=document.querySelector("#covid19 .country .loading");
-		new Chart(this.context, {
-		    type: "line",
-		    data: {
-		        labels: [],
-		        datasets: []
-		    }
-		});
+		this.chart=undefined;
 	}
 	set_loading(status) {
-		if(status)
+		if(status) {
 			this.loading.style.opacity="1";
+			this.covid19.today.cases.innerText="N/A";
+			this.covid19.today.deaths.innerText="N/A";
+			this.covid19.today.recovered.innerText="N/A";
+			this.covid19.active.innerText="N/A";
+			this.covid19.critical.innerText="N/A";
+			this.covid19.total.cases.innerText="N/A";
+			this.covid19.total.deaths.innerText="N/A";
+			this.covid19.total.recovered.innerText="N/A";
+			this.covid19.death_rate.innerText="N/A";
+			this.covid19.recovery_rate.innerText="N/A";
+			if(this.chart!=undefined)
+				this.chart.destroy();
+			this.chart=new Chart(this.context, {
+		    	type: "line",
+			    data: {
+			        labels: [],
+			        datasets: []
+			    }
+			});
+		}
 		else
 			this.loading.style.opacity="0";
 	}
@@ -51,11 +65,14 @@ class View {
 	//Listen to countries selection change
 	listen_countries(callback) {
 		let self=this;
-		document.addEventListener("change", (e) => {
+		this.country.addEventListener("change", (e) => {
 			e.preventDefault();
 			if(typeof(callback)=="function")
 				callback(self.country.value);
 		});
+	}
+	fire_change_event()  {
+		this.country.dispatchEvent(new Event("change"));
 	}
 	//Updates view with given data
 	update(data) {
@@ -87,7 +104,9 @@ class View {
 	//Shows the disease evolution chart
 	show_chart(data) {
 		let border=2;
-		let covid19=new Chart(this.context, {
+		if(this.chart!=undefined)
+			this.chart.destroy();
+		this.chart=new Chart(this.context, {
 		    type: "line",
 		    data: {
 		        labels: data.months,

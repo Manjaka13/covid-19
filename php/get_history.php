@@ -69,7 +69,7 @@
 	//Request and format result
 	if(strlen($country)>0) {
 		ob_start();
-		$data=file_get_contents("https://disease.sh/v3/covid-19/historical/".$country."?lastdays=90");
+		$data=file_get_contents("https://disease.sh/v3/covid-19/historical/".$country."?lastdays=all");
 		ob_clean();
 		if($data!=false)
 			$history=format_data($data);
