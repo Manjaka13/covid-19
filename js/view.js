@@ -26,6 +26,7 @@ class View {
 	}
 	set_loading(status) {
 		if(status) {
+			this.country.style.pointerEvents="none";
 			this.loading.style.opacity="1";
 			this.chart_block.style.display="none";
 			this.covid19.today.cases.innerText="N/A";
@@ -48,8 +49,10 @@ class View {
 			    }
 			});
 		}
-		else
+		else {
 			this.loading.style.opacity="0";
+			this.country.style.pointerEvents="auto";
+		}
 	}
 	select_country(country) {
 		this.country.value=country;
