@@ -25,16 +25,18 @@
 					<select class="selection" name="name">
 						<option>Loading . . .</option>
 					</select>
-					<img class="loading" src="img/loading.gif" alt="...">
+					<div class="loading">
+						<img src="img/loading.gif" alt="...">
+					</div>
 				</form>
 				<table class="country_data">
   					<tr>
   						<th class="empty"></th>
     					<th>Cases</th>
-    					<th>Deaths</th>
-    					<th>Recovered</th>
-    					<th>Active</th>
-    					<th>Critical</th>
+    					<th title="Number of deaths"><span class="fa fa-close"></span> <span class="label">Deaths</span></th>
+    					<th title="Fully recovered"><span class="fa fa-check"></span><span class="label"> Recovered</span></th>
+    					<th title="On treatment"><span class="fa fa-ambulance"></span><span class="label"> Active</span></th>
+    					<th title="Critical cases"><span class="fa fa-warning"></span><span class="label"> Critical</span></th>
   					</tr>
   					<tr class="today">
     					<th>Today</th>

@@ -111,6 +111,7 @@ class View {
 		if(this.chart!=undefined)
 			this.chart.destroy();
 		this.chart_block.style.display="block";
+		this.context.height=300;
 		this.chart=new Chart(this.context, {
 		    type: "line",
 		    data: {
@@ -138,6 +139,7 @@ class View {
 		        }]
 		    },
 		    options: {
+		    	maintainAspectRatio: false,
 		        scales: {
 		            yAxes: [{
 		                ticks: {
