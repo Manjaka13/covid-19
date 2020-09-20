@@ -14,6 +14,8 @@ class Model {
 	}
 	async get_cases(country) {
 		return await ajax(this.cases_target, {country: country}).then(json => {
+			if(json.cases==undefined)
+				json=undefined;
 			return json;
 		}).catch(e => {
 			console.log(e);
@@ -21,6 +23,8 @@ class Model {
 	}
 	async get_history(country) {
 		return await ajax(this.history_target, {country: country}).then(json => {
+			if(json.cases==undefined)
+				json=undefined;
 			return json;
 		}).catch(e => {
 			console.log(e);

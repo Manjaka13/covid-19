@@ -1,6 +1,7 @@
 //Class that handles/update the view
 class View {
 	constructor() {
+		this.chart_block=document.querySelector("#covid19 .chart");
 		this.context=document.querySelector("#covid19 .chart canvas").getContext("2d");
 		this.country=document.querySelector("#covid19 .country .selection");
 		this.covid19={
@@ -26,6 +27,7 @@ class View {
 	set_loading(status) {
 		if(status) {
 			this.loading.style.opacity="1";
+			this.chart_block.style.display="none";
 			this.covid19.today.cases.innerText="N/A";
 			this.covid19.today.deaths.innerText="N/A";
 			this.covid19.today.recovered.innerText="N/A";
@@ -76,36 +78,39 @@ class View {
 	}
 	//Updates view with given data
 	update(data) {
-		let d=new Date(data.updated);
-		//Print today data
-		this.covid19.today.cases.innerText=data.todayCases;
-		this.covid19.today.deaths.innerText=data.todayDeaths;
-		this.covid19.today.recovered.innerText=data.todayRecovered;
-		this.covid19.active.innerText=data.active;
-		this.covid19.critical.innerText=data.critical;
-		//Print total data
-		this.covid19.total.cases.innerText=data.cases;
-		this.covid19.total.deaths.innerText=data.deaths;
-		this.covid19.total.recovered.innerText=data.recovered;
-		//Print rates
-		this.covid19.death_rate.innerText=(((data.deaths*100)/data.cases).toFixed(2))+"%";
-		this.covid19.recovery_rate.innerText=(((data.recovered*100)/data.cases).toFixed(2))+"%";
-		//Print update date
-		this.last_update.innerText=d.toLocaleDateString(undefined, {
-			day: "numeric",
-			month: "numeric",
-			year: "numeric"
-		})+" "+d.toLocaleTimeString(undefined, {
-			hour: "2-digit",
-			minute: "2-digit",
-			second: "2-digit"
-		});
+		if(data!=undefined) {
+			let d=new Date(data.updated);
+			//Print today data
+			this.covid19.today.cases.innerText=data.todayCases;
+			this.covid19.today.deaths.innerText=data.todayDeaths;
+			this.covid19.today.recovered.innerText=data.todayRecovered;
+			this.covid19.active.innerText=data.active;
+			this.covid19.critical.innerText=data.critical;
+			//Print total data
+			this.covid19.total.cases.innerText=data.cases;
+			this.covid19.total.deaths.innerText=data.deaths;
+			this.covid19.total.recovered.innerText=data.recovered;
+			//Print rates
+			this.covid19.death_rate.innerText=(((data.deaths*100)/data.cases).toFixed(2))+"%";
+			this.covid19.recovery_rate.innerText=(((data.recovered*100)/data.cases).toFixed(2))+"%";
+			//Print update date
+			this.last_update.innerText=d.toLocaleDateString(undefined, {
+				day: "numeric",
+				month: "numeric",
+				year: "numeric"
+			})+" "+d.toLocaleTimeString(undefined, {
+				hour: "2-digit",
+				minute: "2-digit",
+				second: "2-digit"
+			});
+		}
 	}
 	//Shows the disease evolution chart
 	show_chart(data) {
 		let border=2;
 		if(this.chart!=undefined)
 			this.chart.destroy();
+		this.chart_block.style.display="block";
 		this.chart=new Chart(this.context, {
 		    type: "line",
 		    data: {

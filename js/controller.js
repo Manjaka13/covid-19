@@ -13,9 +13,10 @@ class Controller {
 				self.view.update(data);
 				return self.model.get_history(self.view.get_selected_country());
 			}).then(data => {
-				console.log((new Date().getTime()-stamp)+" ms");
-				stamp=new Date().getTime();
-				self.view.show_chart(data);
+				/*console.log((new Date().getTime()-stamp)+" ms");
+				stamp=new Date().getTime();*/
+				if(data!=undefined)
+					self.view.show_chart(data);
 				self.view.set_loading(false);
 			}).catch(e => {
 				console.log(e);
