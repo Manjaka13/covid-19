@@ -116,21 +116,21 @@ class View {
 		    data: {
 		        labels: data.months,
 		        datasets: [{
-		            label: "Cases",
+		            label: "New cases",
 		            data: data.cases,
 		            backgroundColor: "rgba(255, 0, 0, 0.3)",
 		            borderColor: "rgba(255, 0, 0, 1)",
 		            borderWidth: border
 		        },
 		        {
-		            label: "Recovered",
+		            label: "New recovered",
 		            data: data.recovered,
 		            backgroundColor: "rgba(0, 200, 0, 0.3)",
 		            borderColor: "rgba(0, 200, 0, 1)",
 		            borderWidth: border
 		        },
 		        {
-		            label: "Deaths",
+		            label: "New deaths",
 		            data: data.deaths,
 		            backgroundColor: "rgba(0, 0, 0, 0.3)",
 		            borderColor: "rgba(0, 0, 0, 1)",

@@ -32,37 +32,34 @@
 		$nb=0;		
 		$history=array(
 			"months" => array(),
-			"cases" => array(),
-			"recovered" => array(),
-			"deaths" => array()
+			"cases" => array($cases[$date[0]]),
+			"recovered" => array($recovered[$date[0]]),
+			"deaths" => array($deaths[$date[0]])
 		);
-		$months=array();
-
-		for($i=0, $index=0; $i<$n_cases; $i++, $nb++) {
+		for($i=0, $index=0; $i<$n_cases; $i++) {
 			$current_month=(int)($date[$i][0].$date[$i][1]);
-			if(isset($months[$index]) && $months[$index]!=$current_month) {
-				$history["cases"][$index]=average($history["cases"][$index], $nb);
-				$history["recovered"][$index]=average($history["recovered"][$index], $nb);
-				$history["deaths"][$index]=average($history["deaths"][$index], $nb);
-				$nb=0;
+			if(!isset($last_month) || $current_month!=$last_month) {
+				$last_month=$current_month;
+				$history["months"][$index]=get_month($current_month);
+				if(!isset($last_cases)) {
+					$last_cases=0;
+					$last_recovered=0;
+					$last_deaths=0;
+				}
+				else {
+					$history["cases"][$index-1]=$cases[$date[$i-1]]-$last_cases;
+					$history["recovered"][$index-1]=$recovered[$date[$i-1]]-$last_recovered;
+					$history["deaths"][$index-1]=$deaths[$date[$i-1]]-$last_deaths;
+					$last_cases=$cases[$date[$i-1]];
+					$last_recovered=$recovered[$date[$i-1]];
+					$last_deaths=$deaths[$date[$i-1]];
+				}
 				$index++;
 			}
-			if(!isset($months[$index])) {
-				$months[$index]=$current_month;
-				$history["months"][$index]=get_month($current_month);
-				$history["cases"][$index]=0;
-				$history["recovered"][$index]=0;
-				$history["deaths"][$index]=0;
-			}
-			$history["cases"][$index]+=$cases[$date[$i]];
-			$history["recovered"][$index]+=$recovered[$date[$i]];
-			$history["deaths"][$index]+=$deaths[$date[$i]];
 		}
-		if($nb>0) {
-			$history["cases"][$index]=average($history["cases"][$index], $nb);
-			$history["recovered"][$index]=average($history["recovered"][$index], $nb);
-			$history["deaths"][$index]=average($history["deaths"][$index], $nb);
-		}
+		$history["cases"][$index-1]=$cases[$date[$i-1]]-$last_cases;
+		$history["recovered"][$index-1]=$recovered[$date[$i-1]]-$last_recovered;
+		$history["deaths"][$index-1]=$deaths[$date[$i-1]]-$last_deaths;
 		return json_encode($history);
 	}
 
