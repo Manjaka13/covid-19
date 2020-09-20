@@ -9,16 +9,11 @@
 		$country=strtolower(htmlspecialchars($_GET["country"]));
 
 	//Returns month in short text
-	function get_month($month) {
+	function get_label($month, $year) {
 		$short_months=array("", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 		if($month>=1 && $month<=12)
-			return $short_months[$month];
+			return $short_months[$month]." 20".((int)$year);
 		return "";
-	}
-
-	//Calculate the average data
-	function average($value, $nb) {
-		return round($value/$nb, 2);
 	}
 
 	//Split data into 4 arrays (months, cases, recovered and deaths)
@@ -40,7 +35,7 @@
 			$current_month=(int)($date[$i][0].$date[$i][1]);
 			if(!isset($last_month) || $current_month!=$last_month) {
 				$last_month=$current_month;
-				$history["months"][$index]=get_month($current_month);
+				$history["months"][$index]=get_label($current_month, $date[$i][strlen($date[$i])-2].$date[$i][strlen($date[$i])-1]);
 				if(!isset($last_cases)) {
 					$last_cases=0;
 					$last_recovered=0;
