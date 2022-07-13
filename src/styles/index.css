@@ -19,7 +19,37 @@ ul {
 }
 
 .container {
-	padding: 20px 200px 0 200px;
+	padding: 20px 25% 0 25%;
+}
+
+@media only screen and (max-width: 2000px) {
+	.container {
+		padding: 20px 20% 0 20%;
+	}
+}
+
+@media only screen and (max-width: 1500px) {
+	.container {
+		padding: 20px 15% 0 15%;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.container {
+		padding: 20px 10% 0 10%;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.container {
+		padding: 20px 50px 0 50px;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.container {
+		padding: 20px 20px 0 20px;
+	}
 }
 
 @import "./Covid.css";
