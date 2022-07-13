@@ -11,7 +11,7 @@
 	}
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) {
 	.covid__title {
 		font-size: 2em;
 	}

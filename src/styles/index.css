@@ -52,6 +52,12 @@ ul {
 	}
 }
 
+@media only screen and (max-width: 400px) {
+	.container {
+		padding: 20px 5px 0 5px;
+	}
+}
+
 @import "./Covid.css";
 @import "./Cases.css";
 @import "./CasesData.css";
