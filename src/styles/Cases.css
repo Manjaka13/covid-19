@@ -1,0 +1,26 @@
+.cases {
+	border: 2px rgb(100, 100, 100) solid;
+	border-radius: 10px 10px 0 0;
+	box-sizing: border-box;
+	background: white;
+}
+
+.cases__data {
+	display: flex;
+	padding: 20px;
+	padding-top: 0;
+}
+
+.cases__title {
+	font-size: 2em;
+	padding: 20px;
+}
+
+.cases__today,
+.cases__total {
+	width: 50%;
+}
+
+.cases__today .title,
+.cases__total .title {
+}

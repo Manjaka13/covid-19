@@ -1,0 +1,29 @@
+/*
+    Export constants from here
+*/
+
+const developmentMode = process.env.REACT_APP_DEVELOPMENT ? true : false;
+const baseUrl = "https://disease.sh/v3/covid-19";
+const getCasesUrl = (country) => developmentMode ? "/data/cases.json" : `/countries/${country}`;
+const getHistoryUrl = (country) => developmentMode ? "/data/history.json" : `/historical/${country}"?lastdays=all"`;
+const getCountriesUrl = () => "/data/countries.json";
+const requestHeaders = {
+    Accept: "application/json",
+    "Content-Type": "application/json"
+};
+const defaultCovidState = {
+    country: "Madagascar",
+    cases: null,
+    history: null,
+    loading: false
+};
+
+export {
+    developmentMode,
+    baseUrl,
+    getCasesUrl,
+    getHistoryUrl,
+    getCountriesUrl,
+    requestHeaders,
+    defaultCovidState
+}

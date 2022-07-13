@@ -1,0 +1,22 @@
+.cases-data__item {
+	padding: 10px 0 10px 10px;
+	border-radius: 5px;
+	font-size: 0.9em;
+	color: rgb(100, 100, 100);
+	transition: all 0.2s ease-in;
+	cursor: pointer;
+}
+
+.cases-data__item:hover {
+	background: rgb(240, 240, 240);
+	background: #5f5fbb;
+	color: white;
+}
+
+.cases-data__item:first-child {
+	margin-top: 10px;
+}
+
+.cases-data__label {
+	font-weight: bold;
+}

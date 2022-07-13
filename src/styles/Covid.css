@@ -1,0 +1,10 @@
+.covid {
+	padding: 40px 100px;
+}
+
+.covid__title {
+	font-size: 3.6em;
+	margin-bottom: 20px;
+	text-align: center;
+	color: #5f5fbb;
+}

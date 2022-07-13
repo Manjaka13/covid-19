@@ -1,0 +1,23 @@
+@font-face {
+	font-family: "Open Sans";
+	src: url(../../public/fonts/OpenSans-Regular.ttf);
+}
+
+* {
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: rgb(245, 245, 245);
+}
+
+ul {
+	list-style-type: none;
+}
+
+@import "./Covid.css";
+@import "./Cases.css";
+@import "./CasesData.css";
