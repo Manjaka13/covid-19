@@ -10,7 +10,8 @@ import {
     faSkull,
     faBriefcaseMedical,
     faVirusCovid,
-    faMapMarkerAlt
+    faMapMarkerAlt,
+    faHeart
 } from "@fortawesome/free-solid-svg-icons";
 
 /*
@@ -27,5 +28,6 @@ library.add(
     faSkull,
     faBriefcaseMedical,
     faVirusCovid,
-    faMapMarkerAlt
+    faMapMarkerAlt,
+    faHeart
 );

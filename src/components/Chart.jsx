@@ -124,7 +124,7 @@ const Chart = ({ history }) => {
 					<YAxis />
 					<Tooltip />
 					<Area
-						type="monotone"
+						type="gradient"
 						dataKey="cases"
 						stackId="1"
 						stroke="red"

@@ -1,5 +1,6 @@
 import { CovidProvider } from "../hooks/useCovid";
 import CovidWrapper from "./CovidWrapper";
+import Footer from "./Footer";
 
 /*
 	App entry
@@ -8,10 +9,11 @@ import CovidWrapper from "./CovidWrapper";
 const Covid = () => {
 	return (
 		<CovidProvider>
-			<div className="covid">
+			<div className="container">
 				<h1 className="covid__title">Covid-19 pandemic evolution</h1>
 				<CovidWrapper />
 			</div>
+			<Footer />
 		</CovidProvider>
 	);
 };
