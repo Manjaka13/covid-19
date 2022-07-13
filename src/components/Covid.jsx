@@ -1,9 +1,8 @@
 import { CovidProvider } from "../hooks/useCovid";
-import Cases from "./Cases";
-import Chart from "./Chart";
+import CovidWrapper from "./CovidWrapper";
 
 /*
-    App entry
+	App entry
 */
 
 const Covid = () => {
@@ -11,9 +10,7 @@ const Covid = () => {
 		<CovidProvider>
 			<div className="covid">
 				<h1 className="covid__title">Covid-19 pandemic evolution</h1>
-				<Cases />
-				<Chart />
-				<footer>Footer</footer>
+				<CovidWrapper />
 			</div>
 		</CovidProvider>
 	);

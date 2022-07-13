@@ -1,15 +1,12 @@
 import React from "react";
-import { useCovid } from "../hooks/useCovid";
 import CasesData from "./CasesData";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 
 /*
-    Get cases for stored country
+	Get cases for stored country
 */
 
-const Cases = () => {
-	const { country, cases } = useCovid();
-
+const Cases = ({ country, cases }) => {
 	return (
 		<div className="cases">
 			<h2 className="cases__title">
