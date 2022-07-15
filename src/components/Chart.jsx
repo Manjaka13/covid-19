@@ -9,7 +9,7 @@ import {
 } from "recharts";
 
 /*
-    Statistic chart
+	Statistic chart
 */
 
 const formatCases = (cases) => {
@@ -103,8 +103,8 @@ const createDataObject = (cases, deaths, recovered) => {
 	return data;
 };
 
-const Chart = ({ history }) => {
-	const { cases, deaths, recovered } = history.timeline;
+const Chart = ({ timeline }) => {
+	const { cases, deaths, recovered } = timeline;
 	const data = createDataObject(cases, deaths, recovered);
 
 	return (

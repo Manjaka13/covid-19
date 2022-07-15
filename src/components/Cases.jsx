@@ -1,16 +1,25 @@
 import React from "react";
 import CasesData from "./CasesData";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
+import { useCovid } from "../hooks/useCovid";
 
 /*
 	Get cases for stored country
 */
 
-const Cases = ({ country, cases }) => {
+const Cases = ({ country, cases, countries }) => {
+	const { updateCountry } = useCovid();
+	const mappedCountries = countries?.map((c, key) => (
+		<option key={key}>{c}</option>
+	));
+
 	return (
 		<div className="cases">
 			<h2 className="cases__title">
-				<Icon icon={["fas", "map-marker-alt"]} /> {country}
+				<Icon icon={["fas", "map-marker-alt"]} />{" "}
+				<select className="select" value={country ? country : ""} onChange={updateCountry}>
+					{mappedCountries}
+				</select>
 			</h2>
 			{cases && (
 				<div className="cases__data">

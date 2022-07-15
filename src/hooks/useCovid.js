@@ -23,9 +23,22 @@ const CovidProvider = ({ children }) => {
     const [loading, setLoading] = useState(defaultCovidState.loading);
 
     useEffect(() => {
+        setLoading(true);
         getCountries()
             .then(setCountries)
             .catch(console.error);
+        getCases(country)
+            .then((data) => {
+                setCases(data);
+            })
+            .catch(console.error)
+            .finally(() => setLoading(false));
+        getHistory(country)
+            .then((data) => {
+                setHistory(data);
+            })
+            .catch(console.error)
+            .finally(() => setLoading(false));
     }, []);
 
     useEffect(() => {
@@ -33,20 +46,26 @@ const CovidProvider = ({ children }) => {
             if (!history || (history && history.country !== country)) {
                 setLoading(true);
                 getCases(country)
-                    .then(setCases)
+                    .then((data) => {
+                        setCases(data);
+                    })
                     .catch(console.error)
                     .finally(() => setLoading(false));
                 getHistory(country)
-                    .then(setHistory)
+                    .then((data) => {
+                        setHistory(data);
+                    })
                     .catch(console.error)
                     .finally(() => setLoading(false));
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [country, history, countries]);
+    }, [country]);
+
+    const updateCountry = (e) => setCountry(e.target.value);
 
     const covidState = {
-        countries, country, cases, history, loading
+        countries, country, cases, history, loading, updateCountry
     };
 
     return (

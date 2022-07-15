@@ -4,16 +4,16 @@ import Chart from "./Chart";
 import { useCovid } from "../hooks/useCovid";
 
 /*
-    Wrapper around covid
+	Wrapper around covid
 */
 
 const CovidWrapper = () => {
-	const { history, country, cases } = useCovid();
+	const { history, country, cases, countries } = useCovid();
 
 	return (
 		<Fragment>
-			<Cases country={country} cases={cases} />
-			{history && <Chart history={history} />}
+			<Cases country={country} cases={cases} countries={countries} />
+			{history && <Chart timeline={history.timeline} />}
 		</Fragment>
 	);
 };
