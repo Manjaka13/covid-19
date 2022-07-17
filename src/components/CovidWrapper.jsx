@@ -13,7 +13,7 @@ const CovidWrapper = () => {
 	return (
 		<Fragment>
 			<Cases country={country} cases={cases} countries={countries} />
-			{history && <Chart timeline={history.timeline} />}
+			{history && <Chart history={history} />}
 		</Fragment>
 	);
 };

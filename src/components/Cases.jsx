@@ -9,9 +9,9 @@ import { useCovid } from "../hooks/useCovid";
 
 const Cases = ({ country, cases, countries }) => {
 	const { updateCountry } = useCovid();
-	const mappedCountries = countries?.map((c, key) => (
-		<option key={key}>{c}</option>
-	));
+	const mappedCountries = countries ? countries?.map((c, key) => (
+		<option key={key} value={c}>{c}</option>
+	)) : (<option value={country}>{country}</option>);
 
 	return (
 		<div className="cases">

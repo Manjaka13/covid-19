@@ -1,4 +1,4 @@
-import React, {
+import {
     useState,
     useEffect,
     useContext,
@@ -6,6 +6,7 @@ import React, {
 } from "react";
 import { defaultCovidState } from "../helpers/const";
 import { getCases, getCountries, getHistory } from "../services";
+import { formatTimeline } from "../helpers/utils";
 
 /*
     Covid hook and context
@@ -22,44 +23,36 @@ const CovidProvider = ({ children }) => {
     const [history, setHistory] = useState(defaultCovidState.history);
     const [loading, setLoading] = useState(defaultCovidState.loading);
 
-    useEffect(() => {
+    // Updates cases and history
+    const update = (country, firstTime) => new Promise((resolve, reject) => {
         setLoading(true);
-        getCountries()
-            .then(setCountries)
-            .catch(console.error);
         getCases(country)
-            .then((data) => {
-                setCases(data);
+            .then(setCases)
+            .then(() => getHistory(country))
+            .then(({ timeline }) => timeline)
+            .then(formatTimeline)
+            .then(setHistory)
+            .then(() => {
+                if (firstTime)
+                    return getCountries();
             })
-            .catch(console.error)
-            .finally(() => setLoading(false));
-        getHistory(country)
             .then((data) => {
-                setHistory(data);
+                if (firstTime)
+                    setCountries(data);
             })
-            .catch(console.error)
+            .catch(reject)
             .finally(() => setLoading(false));
+    });
+
+    useEffect(() => {
+        update(country, true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
-        if (!loading && countries) {
-            if (!history || (history && history.country !== country)) {
-                setLoading(true);
-                getCases(country)
-                    .then((data) => {
-                        setCases(data);
-                    })
-                    .catch(console.error)
-                    .finally(() => setLoading(false));
-                getHistory(country)
-                    .then((data) => {
-                        setHistory(data);
-                    })
-                    .catch(console.error)
-                    .finally(() => setLoading(false));
-            }
-        }
+        if (!loading && countries)
+            if (!history || (history && history.country !== country))
+                update(country);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [country]);
 
