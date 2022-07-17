@@ -2,8 +2,8 @@
     Export constants from here
 */
 
-// const developmentMode = process.env.REACT_APP_DEVELOPMENT ? true : false;
-const developmentMode = false;
+const developmentMode = process.env.REACT_APP_DEVELOPMENT ? true : false;
+// const developmentMode = false;
 const baseUrl = "https://disease.sh/v3/covid-19";
 const getCasesUrl = (country) => developmentMode ? "/data/cases.json" : `${baseUrl}/countries/${country}`;
 const getHistoryUrl = (country) => developmentMode ? "/data/history.json" : `${baseUrl}/historical/${country}?lastdays=all`;
