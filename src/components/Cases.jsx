@@ -16,7 +16,7 @@ const Cases = ({ country, cases, countries }) => {
 	return (
 		<div className="cases">
 			<h2 className="cases__title">
-				<Icon icon={["fas", "map-marker-alt"]} />{" "}
+				<Icon className="icon" icon={["fas", "map-marker-alt"]} />{" "}
 				<select className="select" value={country ? country : ""} onChange={updateCountry}>
 					{mappedCountries}
 				</select>
