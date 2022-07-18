@@ -19,6 +19,24 @@ const defaultCovidState = {
     loading: false
 };
 
+const socialList = [
+    {
+        link: "https://www.facebook.com/Manjaka13",
+        icon: ["fab", "facebook"],
+        title: "View author's Facebook profile",
+    },
+    {
+        link: "https://linkedin.com/in/harijaona-rajaonson",
+        icon: ["fab", "linkedin"],
+        title: "Connect with LinkedIn",
+    },
+    {
+        link: "https://github.com/Manjaka13/covid-19",
+        icon: ["fab", "github"],
+        title: "View this project's repository",
+    },
+];
+
 export {
     developmentMode,
     baseUrl,
@@ -26,5 +44,6 @@ export {
     getHistoryUrl,
     getCountriesUrl,
     requestHeaders,
-    defaultCovidState
+    defaultCovidState,
+    socialList
 }
