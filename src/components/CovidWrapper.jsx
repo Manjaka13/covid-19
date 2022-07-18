@@ -1,6 +1,7 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import Cases from "./Cases";
 import Chart from "./Chart";
+import Spinner from "./Spinner";
 import { useCovid } from "../hooks/useCovid";
 
 /*
@@ -8,12 +9,20 @@ import { useCovid } from "../hooks/useCovid";
 */
 
 const CovidWrapper = () => {
-	const { history, country, cases, countries } = useCovid();
+	const { history, country, cases, countries, loading } = useCovid();
 
 	return (
 		<Fragment>
-			<Cases country={country} cases={cases} countries={countries} />
-			{history && <Chart history={history} />}
+			{!loading && (
+				<Fragment>
+					<Cases country={country} cases={cases} countries={countries} />
+					{history && <Chart history={history} />}
+				</Fragment>
+			)}
+			{loading && <div className="spinner-box">
+				<Spinner />
+				<p className="spinner-box__text">Loading...</p>
+			</div>}
 		</Fragment>
 	);
 };

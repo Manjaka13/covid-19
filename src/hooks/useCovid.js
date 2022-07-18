@@ -58,12 +58,10 @@ const CovidProvider = ({ children }) => {
 
     const updateCountry = (e) => setCountry(e.target.value);
 
-    const covidState = {
-        countries, country, cases, history, loading, updateCountry
-    };
-
     return (
-        <CovidContext.Provider value={covidState}>
+        <CovidContext.Provider value={{
+            countries, country, cases, history, loading, updateCountry
+        }}>
             {children}
         </CovidContext.Provider>
     );

@@ -8,17 +8,19 @@ import { requestHeaders } from "../helpers/const";
 const http = {
 	// Get request
 	get: (url) => new Promise((resolve, reject) => {
-		axios
-			.get(`${url}`, {
-				headers: requestHeaders,
-			})
-			.then((response) => {
-				if (response.data)
-					resolve(typeof response.data === "string" ? JSON.parse(response.data) : response.data);
-				else
-					resolve(typeof response === "string" ? JSON.parse(response) : response);
-			})
-			.catch((e) => reject(e));
+		setTimeout(() => {
+			axios
+				.get(`${url}`, {
+					headers: requestHeaders,
+				})
+				.then((response) => {
+					if (response.data)
+						resolve(typeof response.data === "string" ? JSON.parse(response.data) : response.data);
+					else
+						resolve(typeof response === "string" ? JSON.parse(response) : response);
+				})
+				.catch((e) => reject(e));
+		}, 1000)
 	}),
 };
 
