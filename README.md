@@ -1,3 +1,8 @@
-![covid-19 cover image](img/covid19_cover.jpg)
-# covid-19
-Tool to watch covid-19 disease evolution in all countries.
+# Covid-19
+
+Covid-19 pandemic evolution
+
+### `npm start`
+
+Runs the app\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.

@@ -1,0 +1,67 @@
+@font-face {
+	font-family: "Open Sans";
+	src: url(../../public/fonts/OpenSans-Regular.ttf);
+}
+
+* {
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: rgb(245, 245, 245);
+}
+
+ul {
+	list-style-type: none;
+}
+
+.container {
+	padding: 20px 25% 0 25%;
+}
+
+@media only screen and (max-width: 2000px) {
+	.container {
+		padding: 20px 20% 0 20%;
+	}
+}
+
+@media only screen and (max-width: 1500px) {
+	.container {
+		padding: 20px 15% 0 15%;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.container {
+		padding: 20px 10% 0 10%;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.container {
+		padding: 20px 50px 0 50px;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.container {
+		padding: 20px 20px 0 20px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.container {
+		padding: 20px 5px 0 5px;
+	}
+}
+
+@import "./Covid.css";
+@import "./Cases.css";
+@import "./CasesData.css";
+@import "./Chart.css";
+@import "./Footer.css";
+@import "./Spinner.css";
+@import "./Social.css";

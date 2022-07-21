@@ -1,0 +1,32 @@
+{
+	"updated": 1657691437164,
+	"country": "Madagascar",
+	"countryInfo": {
+		"_id": 450,
+		"iso2": "MG",
+		"iso3": "MDG",
+		"lat": -20,
+		"long": 47,
+		"flag": "https://disease.sh/assets/img/flags/mg.png"
+	},
+	"cases": 66098,
+	"todayCases": 0,
+	"deaths": 1403,
+	"todayDeaths": 0,
+	"recovered": 63895,
+	"todayRecovered": 0,
+	"active": 800,
+	"critical": 6,
+	"casesPerOneMillion": 2269,
+	"deathsPerOneMillion": 48,
+	"tests": 478036,
+	"testsPerOneMillion": 16410,
+	"population": 29131422,
+	"continent": "Africa",
+	"oneCasePerPeople": 441,
+	"oneDeathPerPeople": 20764,
+	"oneTestPerPeople": 61,
+	"activePerOneMillion": 27.46,
+	"recoveredPerOneMillion": 2193.34,
+	"criticalPerOneMillion": 0.21
+}

@@ -1,0 +1,18 @@
+.covid__title {
+	font-size: 3.6em;
+	margin-bottom: 20px;
+	text-align: center;
+	color: #5f5fbb;
+}
+
+@media only screen and (max-width: 1000px) {
+	.covid__title {
+		font-size: 2.8em;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.covid__title {
+		font-size: 2em;
+	}
+}

@@ -1,0 +1,22 @@
+.social {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 40px;
+}
+
+.social__item {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.social .link {
+	font-size: 3em;
+	color: rgb(170, 170, 170);
+	transition: all 0.2s ease-out;
+}
+
+.social .link:hover {
+	color: #5f5fbb;
+}

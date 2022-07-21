@@ -1,0 +1,21 @@
+.footer__text {
+	color: rgb(100, 100, 100);
+	text-align: center;
+	padding: 20px;
+}
+
+.footer__author {
+	color: #5f5fbb;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.footer__separator {
+	width: 100%;
+	height: 1px;
+	background: rgb(200, 200, 200);
+}
+
+.footer__heart {
+	color: #f92c2c;
+}

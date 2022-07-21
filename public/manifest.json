@@ -1,0 +1,15 @@
+{
+  "short_name": "Covid-19",
+  "name": "Covid-19",
+  "icons": [
+    {
+      "src": "/assets/covid-19-logo.png",
+      "type": "image/png",
+      "sizes": "51x51"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#FFFFFF",
+  "background_color": "#ffffff"
+}
